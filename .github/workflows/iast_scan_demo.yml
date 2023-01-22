@@ -1,8 +1,8 @@
 name: IAST demo using Contrast
 on: push
 
-
 jobs:
+ Build: 
     runs-on: iast_demo_Linux
     steps:
       - uses: actions/checkout@v3
