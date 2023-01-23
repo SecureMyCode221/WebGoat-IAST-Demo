@@ -18,4 +18,4 @@ jobs:
            
       - name: Running and enable Contrast to monitor the appication
         run: |
-           java -javaagent:./contrast.jar -Dcontrast.config.path= ~/Desktop/contrast_security.yaml -jar ~/target/webgoat.jar
+           java -javaagent:./contrast.jar -Dcontrast.config.path= /home/sneha/Desktop/contrast_security.yaml -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar
