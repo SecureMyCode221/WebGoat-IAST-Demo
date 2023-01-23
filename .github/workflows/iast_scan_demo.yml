@@ -1,4 +1,4 @@
-name: IAST demo using Contrast!!
+name: IAST demo using Contrast!
 on: push
 
 jobs:
