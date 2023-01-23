@@ -6,10 +6,17 @@ jobs:
     runs-on: Linux
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: 17
-          architecture: x64
-    
+      - name: Building the application
+        run: |
+           cd WebGoat
+           git checkout main
+           ./mvnw clean install
+           curl -L 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.contrastsecurity&a=contrast-agent&v=LATEST' -o contrast.jar
+      
+      - name: Install contrast agent
+        run: |
+           curl -L 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.contrastsecurity&a=contrast-agent&v=LATEST' -o contrast.jar
+           
+      - name: Running and enable Contrast to monitor the appication
+        run: |
+           java -javaagent:./contrast.jar -Dcontrast.config.path= /Desktop/contrast_security.yaml -jar /target/webgoat.jar
