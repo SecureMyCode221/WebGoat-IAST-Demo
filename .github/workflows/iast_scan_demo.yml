@@ -9,7 +9,6 @@ jobs:
       - name: Building the application
         run: |
            cd /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo
-           git checkout main
            ./mvnw clean install
            curl -L 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.contrastsecurity&a=contrast-agent&v=LATEST' -o contrast.jar
       
