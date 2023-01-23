@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Building the application
         run: |
-           cd WebGoat-IAST-Demo
+           cd ~/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo
            git checkout main
            ./mvnw clean install
            curl -L 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.contrastsecurity&a=contrast-agent&v=LATEST' -o contrast.jar
@@ -19,4 +19,4 @@ jobs:
            
       - name: Running and enable Contrast to monitor the appication
         run: |
-           java -javaagent:./contrast.jar -Dcontrast.config.path= /Desktop/contrast_security.yaml -jar /target/webgoat.jar
+           java -javaagent:./contrast.jar -Dcontrast.config.path= ~/Desktop/contrast_security.yaml -jar ~/target/webgoat.jar
