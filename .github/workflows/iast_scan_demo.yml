@@ -18,16 +18,16 @@ jobs:
            pwd
            ./mvnw clean install
       
-      - name: Install contrast agent
-        run: |
-           pwd
+      #- name: Install contrast agent
+        #run: |
+           #pwd
            #cd /home/sneha/Desktop/
            #curl -L 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.contrastsecurity&a=contrast-agent&v=LATEST' -o contrast.jar
            
       - name: Running and enable Contrast to monitor the appication
         run: |
            pwd
-           sudo java -javaagent: /home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar
+           java -javaagent: /home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar
            #ls
            #pwd
            #sudo cp ~/webgoat-2023.3.jar contrast
