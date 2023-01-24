@@ -27,7 +27,7 @@ jobs:
       - name: Running and enable Contrast to monitor the appication
         run: |
            pwd
-           java -javaagent: /home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar
+           java -javaagent:/home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar
            #ls
            #pwd
            #sudo cp ~/webgoat-2023.3.jar contrast
