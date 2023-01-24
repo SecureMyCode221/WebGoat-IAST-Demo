@@ -23,12 +23,31 @@ jobs:
            #pwd
            #cd /home/sneha/Desktop/
            #curl -L 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.contrastsecurity&a=contrast-agent&v=LATEST' -o contrast.jar
-           
+      - name: Define job start time
+        run: |
+          import time
+          n = int(round(time.time() * 1000))
+          print(f"::set-output name=jobStartTime::{n}")
+        shell: python
+        id: set-job-start-time
+      # steps to build and run integration tests
+      # - name: Run tests
+      #
+      - name: Contrast Verify
+        uses: Contrast-Security-OSS/integration-verify-github-action@main
+        with:
+          apiKey: ${{ secrets.CONTRAST_API_KEY }}
+          orgId: ef489b1a-c1af-4378-a737-9f56b4c0d4a7
+          apiUrl: https://ce.contrastsecurity.com/Contrast
+          authHeader: ${{ secrets.CONTRAST_AUTH_HEADER }}
+          appName: WebGoat
+          #appId: or app_uuid_here if known
+          jobStartTime: "${{ steps.set-job-start-time.outputs.jobStartTime }}"           
       - name: Running and enable Contrast to monitor the appication
         run: |
            pwd
-           #java -javaagent:/home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar
-           java -javaagent:/home/sneha/Desktop/contrast.jar
+           #java -javaagent:/home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar 
+           
            #ls
            #pwd
            #sudo cp ~/webgoat-2023.3.jar contrast
