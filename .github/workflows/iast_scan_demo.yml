@@ -30,4 +30,4 @@ jobs:
            #java -javaagent:/home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar
            ls
            pwd
-           java -javaagent:contrast.jar -jar ~/target/webgoat-2023.3.jar
+           sudo java -javaagent:contrast.jar -jar /home/runner/work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar
