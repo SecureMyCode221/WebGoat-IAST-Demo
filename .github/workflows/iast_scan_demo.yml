@@ -14,8 +14,8 @@ jobs:
       - name: Install contrast agent
         run: |
            pwd
-           cd /home/sneha/Desktop/
-           curl -L 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.contrastsecurity&a=contrast-agent&v=LATEST' -o contrast.jar
+           #cd /home/sneha/Desktop/
+           #curl -L 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.contrastsecurity&a=contrast-agent&v=LATEST' -o contrast.jar
            
       - name: Running and enable Contrast to monitor the appication
         run: |
