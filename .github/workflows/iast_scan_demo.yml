@@ -10,7 +10,7 @@ jobs:
         #with:
          # distribution: 'microsoft'
           #java-version: 17
-          #architecture: x64
+          #architecture: x64 
       - uses: actions/checkout@v3
       - name: Building the application
         run: |
