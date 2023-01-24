@@ -11,9 +11,6 @@ jobs:
         run: |
            #cd /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo
            pwd
-           ls
-           cd WebGoat-IAST-Demo/WebGoat-IAST-Demo
-           pwd
            ./mvnw clean install
       
       - name: Install contrast agent
