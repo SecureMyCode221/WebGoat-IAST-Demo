@@ -10,7 +10,10 @@ jobs:
       - name: Building the application
         run: |
            #cd /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo
-           cd /WebGoat-IAST-Demo/WebGoat-IAST-Demo
+           pwd
+           ls
+           cd WebGoat-IAST-Demo/WebGoat-IAST-Demo
+           pwd
            ./mvnw clean install
       
       - name: Install contrast agent
@@ -22,4 +25,6 @@ jobs:
       - name: Running and enable Contrast to monitor the appication
         run: |
            #java -javaagent:/home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar
-           java -javaagent:/contrast.jar -jar /WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar
+           ls
+           pwd
+           java -javaagent:contrast.jar -jar ~/target/webgoat-2023.3.jar
