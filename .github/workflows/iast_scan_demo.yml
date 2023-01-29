@@ -16,6 +16,7 @@ jobs:
         run: |
            #cd /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo
            pwd
+           ./mvnw spotless:apply
            ./mvnw clean install
       
       #- name: Install contrast agent
