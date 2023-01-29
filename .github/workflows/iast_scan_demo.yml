@@ -40,7 +40,8 @@ jobs:
           apiKey: ${{ secrets.CONTRAST_API_KEY }}
           orgId: ef489b1a-c1af-4378-a737-9f56b4c0d4a7
           apiUrl: https://ce.contrastsecurity.com/Contrast
-          authHeader: ${{ secrets.CONTRAST_AUTH_HEADER }}
+          userName: ${{ secrets.user_name }}
+          serviceKey: ${{ secrets.servicekey }}
           appName: WebGoat
           #appId: or app_uuid_here if known
           #jobStartTime: "${{ steps.set-job-start-time.outputs.jobStartTime }}"           
