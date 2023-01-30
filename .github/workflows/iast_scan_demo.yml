@@ -25,11 +25,19 @@ jobs:
        #    pwd
            #cd /home/sneha/Desktop/
            #curl -L 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.contrastsecurity&a=contrast-agent&v=LATEST' -o contrast.jar
-               
+      - name: Contrast verify
+        uses: Contrast-Security-OSS/integration-verify-github-action@main
+        with:
+          apiKey: ${{ secrets.CONTRAST_API_KEY }}
+          orgId: ef489b1a-c1af-4378-a737-9f56b4c0d4a7
+          apiUrl: https://app.contrastsecurity.com
+          authHeader: ${{ secrets.CONTRAST_AUTH_HEADER }}
+          appName: WebGoat
+          #appId: or app_uuid_here if known            
       - name: Running and enable Contrast to monitor the appication
         run: |
            pwd
-           java -javaagent:/home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar 
+           #java -javaagent:/home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar 
            curl -H "Authorization: $(echo -n ${{secrets.user_name}}:${{secrets.servicekey}} | base64)"  -H "API-Key: ${{secrets.CONTRAST_API_KEY}} " https://app.contrastsecurity.com/Contrast/api/ng/ef489b1a-c1af-4378-a737-9f56b4c0d4a7/orgtraces/filter?expand=request | jq -r '.traces[] | {uuid: .uuid, protocol: .request.protocol} | [.uuid, .protocol] | @csv'
 
            #ls
