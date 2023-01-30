@@ -4,36 +4,34 @@ on: push
 jobs:
  IAST_Security: 
     timeout-minutes: 30
-    runs-on: ubuntu-latest
+    runs-on: Linux
     steps:
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'microsoft'
-          java-version: 17
-          architecture: x64 
+      #- name: Set up JDK 17
+       # uses: actions/setup-java@v3
+       # with:
+       #   distribution: 'microsoft'
+       #   java-version: 17
+       #   architecture: x64 
       - uses: actions/checkout@v3
       - name: Building the application
         run: |
-           #cd /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo
+           cd /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo
            pwd
            ./mvnw spotless:apply
            ./mvnw clean install
       
-      - name: Install contrast agent
-        run: |
-           pwd
+      #- name: Install contrast agent
+      #  run: |
+       #    pwd
            #cd /home/sneha/Desktop/
            #curl -L 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.contrastsecurity&a=contrast-agent&v=LATEST' -o contrast.jar
                
       - name: Running and enable Contrast to monitor the appication
         run: |
            pwd
-           #curl -H "Authorization: $(echo -n ${{secrets.user_name}}:${{secrets.servicekey}} | base64)"  -H "API-Key: ${{secrets.CONTRAST_API_KEY}} " https://app.contrastsecurity.com/Contrast/api/ng/ef489b1a-c1af-4378-a737-9f56b4c0d4a7/orgtraces/filter?expand=request | jq -r '.traces[] | {uuid: .uuid, protocol: .request.protocol} | [.uuid, .protocol] | @csv'
-           # java -javaagent:/home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar 
-           set path = /home/runner/work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/
-           java -javaagent:contrast.jar -jar $path/webgoat-2023.3.jar 
-           
+           java -javaagent:/home/sneha/Desktop/contrast.jar -jar /home/sneha/Downloads/actions-runner/_work/WebGoat-IAST-Demo/WebGoat-IAST-Demo/target/webgoat-2023.3.jar 
+           curl -H "Authorization: $(echo -n ${{secrets.user_name}}:${{secrets.servicekey}} | base64)"  -H "API-Key: ${{secrets.CONTRAST_API_KEY}} " https://app.contrastsecurity.com/Contrast/api/ng/ef489b1a-c1af-4378-a737-9f56b4c0d4a7/orgtraces/filter?expand=request | jq -r '.traces[] | {uuid: .uuid, protocol: .request.protocol} | [.uuid, .protocol] | @csv'
+
            #ls
            #pwd
            #sudo cp ~/webgoat-2023.3.jar contrast
